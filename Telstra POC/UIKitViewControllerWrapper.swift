@@ -9,13 +9,15 @@ import SwiftUI
 import UIKit
 
 struct UIKitViewControllerWrapper: UIViewControllerRepresentable {
-    typealias UIViewControllerType = MyTableViewController
+    typealias UIViewControllerType = UINavigationController
     
-    func makeUIViewController(context: Context) -> MyTableViewController {
-        return MyTableViewController()
+    func makeUIViewController(context: Context) -> UINavigationController {
+        let tableController = MyTableViewController()
+        let navigationController = UINavigationController(rootViewController: tableController)
+        return navigationController
     }
     
-    func updateUIViewController(_ uiViewController: MyTableViewController, context: Context) {
+    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
         // Update the view controller if needed
     }
 }
