@@ -9,7 +9,6 @@ import UIKit
 
 class ImageLoader {
     
-    static let sharedInstance = ImageLoader()
     
     private var loadedImages = [URL: UIImage]()
     private var runningRequests = [UUID: URLSessionDataTask]()

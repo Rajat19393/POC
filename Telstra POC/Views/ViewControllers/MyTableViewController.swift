@@ -19,8 +19,11 @@ class MyTableViewController: UIViewController {
     let tableView = UITableView()
     var safeArea: UILayoutGuide!
     let refreshControl = UIRefreshControl()
-
+    
     private var viewModel: MyTableViewModel!
+    
+    let navItem = UINavigationItem(title: "Loading Title ...")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,17 +32,18 @@ class MyTableViewController: UIViewController {
         setupViewModel()
         setupTableView()
         setupRefreshControl()
+        setupNavBar()
     }
     
-    func setupViewModel() {
+    private func setupViewModel() {
         let myTableViewModel = MyTableViewModel(view: self)
         self.viewModel = myTableViewModel
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 44).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -47,7 +51,14 @@ class MyTableViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    func setupRefreshControl() {
+    private func setupNavBar() {
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44))
+        navBar.barTintColor = .white
+        view.addSubview(navBar)
+        navBar.setItems([navItem], animated: false)
+    }
+    
+    private func setupRefreshControl() {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.refreshControl = refreshControl
@@ -55,6 +66,7 @@ class MyTableViewController: UIViewController {
     
     @objc func refresh(_ sender: AnyObject) {
         viewModel.refreshData()
+        
     }
 }
 
@@ -63,7 +75,7 @@ extension MyTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.myTableModel?.rows.count ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyTableViewCell.reuseId, for: indexPath) as? MyTableViewCell else{
             return UITableViewCell()
@@ -74,12 +86,24 @@ extension MyTableViewController: UITableViewDataSource {
     }
 }
 
+extension MyTableViewController {
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        // Adjust the width of the navigation bar based on the view's width
+        if let navBar = view.subviews.compactMap({ $0 as? UINavigationBar }).first {
+            navBar.frame.size.width = view.frame.size.width
+        }
+    }
+}
+
 extension MyTableViewController: MyTableViewOutput {
     func refreshUI() {
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
-            self.navigationController?.navigationItem.title = self.viewModel.myTableModel?.title ?? "Loading Title ..."
+            self.navItem.title = self.viewModel.myTableModel?.title ?? "Loading Title ..."
             self.tableView.reloadData()
         }
     }
 }
+
+

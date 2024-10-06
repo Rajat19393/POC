@@ -28,7 +28,7 @@ class MyTableViewModel {
                  Row(title: "Ganondorf", description: "GanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorfGanondorf", imageHref: "Link"),
                  Row(title: "Midna", description: "MidnaMidnaMidnaMidnaMidnaMidna", imageHref: "Link")]
                 
-                self.myTableModel = MyTableModel(title: "", rows: rows)
+                self.myTableModel = MyTableModel(title: "Mock Data", rows: rows)
                 self.view?.refreshUI()
                 print(error?.localizedDescription as Any)
             }
