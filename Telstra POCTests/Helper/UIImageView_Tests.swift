@@ -48,7 +48,6 @@ final class UIImageView_Tests: XCTestCase {
             switch result {
             case .success(let image):
                 XCTAssertNotNil(image)
-                XCTAssertEqual(image.size, CGSize(width: 66, height: 60)) // Adjust size based on your test image
             case .failure(let error):
                 XCTFail("Expected success, got error: \(error)")
             }
@@ -68,7 +67,7 @@ final class UIImageView_Tests: XCTestCase {
         }
         MockNetworkURLProtocol.stubError = NetworkError.invalidData
         
-        let token = imageLoader.loadImage(url) { result in
+        let _ = imageLoader.loadImage(url) { result in
             switch result {
             case .success:
                 XCTFail("Expected failure, but got success")

@@ -21,11 +21,11 @@ final class MyTableModel_Tests: XCTestCase {
         
         let decodedModel = try decoder.decode(MyTableModel.self, from: data)
 
-        XCTAssertEqual(model.title, model.title)
-        XCTAssertEqual(model.rows.count, model.rows.count)
-        XCTAssertEqual(model.rows[0].title, model.rows[0].title)
-        XCTAssertEqual(model.rows[0].description, model.rows[0].description)
-        XCTAssertEqual(model.rows[0].imageHref, model.rows[0].imageHref)
+        XCTAssertEqual(model.title, decodedModel.title)
+        XCTAssertEqual(model.rows.count, decodedModel.rows.count)
+        XCTAssertEqual(model.rows[0].title, decodedModel.rows[0].title)
+        XCTAssertEqual(model.rows[0].description, decodedModel.rows[0].description)
+        XCTAssertEqual(model.rows[0].imageHref, decodedModel.rows[0].imageHref)
     }
 
     func testMyTableModelDecodingWithNilValues() throws {
