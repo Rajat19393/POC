@@ -8,15 +8,15 @@
 import UIKit
 
 class MyTableViewCell: UITableViewCell {
-    
-    static let reuseId = "MyTableViewCell"
-    
+        
     var fact: Row? {
         didSet {
-            factTitleLabel.text = fact?.title
-            factDescriptionLabel.text = fact?.description
+            factTitleLabel.text = fact?.title ?? Constants.notAvailable
+            factDescriptionLabel.text = fact?.description ?? Constants.notAvailable
             if let imageURLString =  fact?.imageHref, let url = URL(string:  imageURLString) {
                 factImageView.loadImage(at: url)
+            } else {
+                factImageView.image = UIImage(named: Constants.placeHolder)
             }
         }
     }
@@ -25,8 +25,8 @@ class MyTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "placeholder") // Set a placeholder image
-        imageView.backgroundColor = UIColor.lightGray // Background color as a placeholder
+        imageView.image = UIImage(named: Constants.placeHolder) // Set a placeholder image
+        imageView.backgroundColor = UIColor.teal // Background color as a placeholder
         return imageView
     }()
 
@@ -34,8 +34,7 @@ class MyTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 1
-        label.text = "Not Available" // Placeholder text
-        label.textColor = .gray
+        label.text = Constants.notAvailable // Placeholder text
         return label
     }()
 
@@ -43,7 +42,7 @@ class MyTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 0
-        label.text = "Not Available" // Placeholder text
+        label.text = Constants.notAvailable // Placeholder text
         label.textColor = .lightGray // Change text color to indicate it's description
         return label
     }()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570708922CB2B4B400E9F0CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570708912CB2B4B400E9F0CF /* Constants.swift */; };
 		571E52772CB2576500390085 /* UIImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571E52762CB2576500390085 /* UIImageLoader.swift */; };
 		571E527A2CB257B800390085 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571E52792CB257B800390085 /* UIImageView+Extension.swift */; };
 		5747F3E62CB1ACD000291A13 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747F3E52CB1ACD000291A13 /* ImageLoader.swift */; };
@@ -24,6 +25,13 @@
 		57772BC72CB05ABE008106EE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57772BC62CB05ABE008106EE /* NetworkManager.swift */; };
 		57772BC92CB05E5C008106EE /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57772BC82CB05E5C008106EE /* EndPoints.swift */; };
 		57772BD32CB0FED3008106EE /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57772BD22CB0FED3008106EE /* MyTableViewCell.swift */; };
+		57D88BF12CB42DA20093CE1E /* API_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D88BF02CB42DA20093CE1E /* API_Tests.swift */; };
+		57D88BF32CB42DCF0093CE1E /* NetworkManager_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D88BF22CB42DCF0093CE1E /* NetworkManager_Tests.swift */; };
+		57D88BF52CB42DDD0093CE1E /* UIImageView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D88BF42CB42DDD0093CE1E /* UIImageView_Tests.swift */; };
+		57D88BF72CB42E680093CE1E /* MyTableModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D88BF62CB42E680093CE1E /* MyTableModel_Tests.swift */; };
+		57D88BF92CB42E950093CE1E /* MyTableViewCell_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D88BF82CB42E950093CE1E /* MyTableViewCell_Tests.swift */; };
+		57D88BFB2CB42EA20093CE1E /* MyTableViewController_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D88BFA2CB42EA20093CE1E /* MyTableViewController_Tests.swift */; };
+		57D88BFD2CB42EF40093CE1E /* MyTableViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D88BFC2CB42EF40093CE1E /* MyTableViewModel_Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		570708912CB2B4B400E9F0CF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		571E52762CB2576500390085 /* UIImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageLoader.swift; sourceTree = "<group>"; };
 		571E52792CB257B800390085 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		571E527B2CB25AF300390085 /* Telstra-POC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Telstra-POC-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -66,6 +75,13 @@
 		57772BC62CB05ABE008106EE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		57772BC82CB05E5C008106EE /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		57772BD22CB0FED3008106EE /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		57D88BF02CB42DA20093CE1E /* API_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Tests.swift; sourceTree = "<group>"; };
+		57D88BF22CB42DCF0093CE1E /* NetworkManager_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager_Tests.swift; sourceTree = "<group>"; };
+		57D88BF42CB42DDD0093CE1E /* UIImageView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView_Tests.swift; sourceTree = "<group>"; };
+		57D88BF62CB42E680093CE1E /* MyTableModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableModel_Tests.swift; sourceTree = "<group>"; };
+		57D88BF82CB42E950093CE1E /* MyTableViewCell_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell_Tests.swift; sourceTree = "<group>"; };
+		57D88BFA2CB42EA20093CE1E /* MyTableViewController_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewController_Tests.swift; sourceTree = "<group>"; };
+		57D88BFC2CB42EF40093CE1E /* MyTableViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewModel_Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +109,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		570708902CB2B4A000E9F0CF /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				570708912CB2B4B400E9F0CF /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		570708962CB2F08D00E9F0CF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				57D88BF62CB42E680093CE1E /* MyTableModel_Tests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		570708992CB2F08E00E9F0CF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				57D88BF82CB42E950093CE1E /* MyTableViewCell_Tests.swift */,
+				57D88BFA2CB42EA20093CE1E /* MyTableViewController_Tests.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5707089D2CB2F08E00E9F0CF /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				57D88BF02CB42DA20093CE1E /* API_Tests.swift */,
+				57D88BF22CB42DCF0093CE1E /* NetworkManager_Tests.swift */,
+				57D88BF42CB42DDD0093CE1E /* UIImageView_Tests.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		571E52752CB2574300390085 /* ImageDownloading */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,7 +210,11 @@
 		57772B9E2CB04C40008106EE /* Telstra POCTests */ = {
 			isa = PBXGroup;
 			children = (
+				5707089D2CB2F08E00E9F0CF /* Helper */,
+				570708962CB2F08D00E9F0CF /* Model */,
+				570708992CB2F08E00E9F0CF /* View */,
 				57772B9F2CB04C40008106EE /* Telstra_POCTests.swift */,
+				57D88BFC2CB42EF40093CE1E /* MyTableViewModel_Tests.swift */,
 			);
 			path = "Telstra POCTests";
 			sourceTree = "<group>";
@@ -211,6 +266,7 @@
 		57772BCB2CB065A3008106EE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				570708902CB2B4A000E9F0CF /* Constants */,
 				571E52782CB2579F00390085 /* Extensions */,
 				57772BC12CB052A4008106EE /* NetworkManager */,
 			);
@@ -370,6 +426,7 @@
 				57772BD32CB0FED3008106EE /* MyTableViewCell.swift in Sources */,
 				571E52772CB2576500390085 /* UIImageLoader.swift in Sources */,
 				571E527A2CB257B800390085 /* UIImageView+Extension.swift in Sources */,
+				570708922CB2B4B400E9F0CF /* Constants.swift in Sources */,
 				57772BC72CB05ABE008106EE /* NetworkManager.swift in Sources */,
 				57772B902CB04C3F008106EE /* ContentView.swift in Sources */,
 				57772B8E2CB04C3F008106EE /* Telstra_POCApp.swift in Sources */,
@@ -382,7 +439,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57D88BF92CB42E950093CE1E /* MyTableViewCell_Tests.swift in Sources */,
+				57D88BFB2CB42EA20093CE1E /* MyTableViewController_Tests.swift in Sources */,
+				57D88BF52CB42DDD0093CE1E /* UIImageView_Tests.swift in Sources */,
 				57772BA02CB04C40008106EE /* Telstra_POCTests.swift in Sources */,
+				57D88BF12CB42DA20093CE1E /* API_Tests.swift in Sources */,
+				57D88BFD2CB42EF40093CE1E /* MyTableViewModel_Tests.swift in Sources */,
+				57D88BF32CB42DCF0093CE1E /* NetworkManager_Tests.swift in Sources */,
+				57D88BF72CB42E680093CE1E /* MyTableModel_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

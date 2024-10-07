@@ -14,13 +14,18 @@ enum NetworkError: Error {
 class NetworkManager {
     /// A shared instance of the 'Network Manager that is initialized with a shared URLSession* .
     static let shared = NetworkManager ()
+    private var session : URLSession!
+    
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
+    
     typealias completionClosure = ((MyTableModel?, Error?) -> Void)
     
     public func fetchFacts(completion: completionClosure?) {
         let request = createFactsRequest()
         executeRequest(request: request, completion: completion)
     }
-
     
     private func createFactsRequest() -> URLRequest {
         let url = EndPoints.facts.url
@@ -31,7 +36,6 @@ class NetworkManager {
     }
     
     private func executeRequest<T: Codable>(request: URLRequest, completion: ((T?, Error?) -> Void)?) {
-        let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
                 completion?(nil, error)
@@ -51,12 +55,12 @@ class NetworkManager {
 
 
 extension NetworkManager {
-//    This method is used to Parse the data to the required Object , if encoding of data is not as per utf-8, then we need to send the parameter encoding.
-//    default value of encoding is seta as utf-8
+    //    This method is used to Parse the data to the required Object , if encoding of data is not as per utf-8, then we need to send the parameter encoding.
+    //    default value of encoding is seta as utf-8
     private func decodeJSON<DataType: Decodable>(data: Data, encoding: String.Encoding = .utf8, type: DataType.Type) throws -> DataType? {
-//        first we decode our data as string from encoding type used to encode it
+        //        first we decode our data as string from encoding type used to encode it
         if let stringData = String(data: data, encoding: encoding) {
-//            Then we encode our string to utf-8 data
+            //            Then we encode our string to utf-8 data
             if let jsonData = stringData.data(using: .utf8) {
                 let decoder = JSONDecoder()
                 do {

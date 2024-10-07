@@ -25,7 +25,8 @@ class UIImageLoader {
             imageView.image = image
           }
         } catch {
-          // handle the error
+            // used placeholder image in case of any error
+            imageView.image = UIImage(named: Constants.placeHolder)
         }
       }
 

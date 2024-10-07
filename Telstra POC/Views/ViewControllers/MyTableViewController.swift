@@ -11,7 +11,10 @@ protocol MyTableViewOutput:AnyObject {
     func refreshUI()
 }
 protocol MyTableViewInput: AnyObject {
+    var myTableModel: MyTableModel? { get set }
+
     func refreshData()
+    func fetchFacts()
 }
 
 class MyTableViewController: UIViewController {
@@ -20,9 +23,9 @@ class MyTableViewController: UIViewController {
     var safeArea: UILayoutGuide!
     let refreshControl = UIRefreshControl()
     
-    private var viewModel: MyTableViewModel!
+    var viewModel: MyTableViewModel!
     
-    let navItem = UINavigationItem(title: "Loading Title ...")
+    let navItem = UINavigationItem(title: Constants.loadingTitle)
     
     
     override func viewDidLoad() {
@@ -47,7 +50,7 @@ class MyTableViewController: UIViewController {
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.register(MyTableViewCell.self, forCellReuseIdentifier: MyTableViewCell.reuseId)
+        tableView.register(MyTableViewCell.self, forCellReuseIdentifier: Constants.TableViewIds.myTableViewCellReUseId)
         tableView.dataSource = self
     }
     
@@ -59,7 +62,7 @@ class MyTableViewController: UIViewController {
     }
     
     private func setupRefreshControl() {
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.attributedTitle = NSAttributedString(string: Constants.pullToRefresh)
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.refreshControl = refreshControl
     }
@@ -77,7 +80,7 @@ extension MyTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyTableViewCell.reuseId, for: indexPath) as? MyTableViewCell else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewIds.myTableViewCellReUseId, for: indexPath) as? MyTableViewCell else{
             return UITableViewCell()
         }
         cell.fact = self.viewModel.myTableModel?.rows[indexPath.row]
@@ -100,7 +103,7 @@ extension MyTableViewController: MyTableViewOutput {
     func refreshUI() {
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
-            self.navItem.title = self.viewModel.myTableModel?.title ?? "Loading Title ..."
+            self.navItem.title = self.viewModel.myTableModel?.title ?? Constants.loadingTitle
             self.tableView.reloadData()
         }
     }
