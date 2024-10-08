@@ -32,7 +32,7 @@ final class UIImageView_Tests: XCTestCase {
         imageLoader = nil
         super.tearDown()
     }
-
+    
     func testLoadImageSuccess() {
         let expectation = self.expectation(description: "Image should be loaded successfully")
         
@@ -43,7 +43,7 @@ final class UIImageView_Tests: XCTestCase {
         let mockData = UIImage(systemName: "star")!.pngData()!
         
         MockNetworkURLProtocol.stubResponse = mockData
-                
+        
         let token = imageLoader.loadImage(url) { result in
             switch result {
             case .success(let image):
@@ -57,7 +57,7 @@ final class UIImageView_Tests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertNotNil(token, "Expected a token for the image load operation")
     }
-
+    
     func testLoadImageFailure() {
         let expectation = self.expectation(description: "Image load should fail")
         
@@ -79,7 +79,7 @@ final class UIImageView_Tests: XCTestCase {
         
         waitForExpectations(timeout: 5, handler: nil)
     }
-
+    
     func testCancelImageLoad() {
         let expectation = self.expectation(description: "Image load should be cancelled")
         

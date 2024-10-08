@@ -14,15 +14,15 @@ import Foundation
 class MockNetworkURLProtocol: URLProtocol {
     static var stubResponse: Data?
     static var stubError: Error?
-
+    
     override class func canInit(with request: URLRequest) -> Bool {
         return true // Capture all requests
     }
-
+    
     override class func canonicalRequest(for request: URLRequest) -> URLRequest {
         return request
     }
-
+    
     override func startLoading() {
         if let error = MockNetworkURLProtocol.stubError {
             client?.urlProtocol(self, didFailWithError: error)
@@ -31,7 +31,7 @@ class MockNetworkURLProtocol: URLProtocol {
             client?.urlProtocolDidFinishLoading(self)
         }
     }
-
+    
     override func stopLoading() {
         // No cleanup needed for the mock
     }
@@ -40,8 +40,8 @@ class MockNetworkURLProtocol: URLProtocol {
 final class NetworkManager_Tests: XCTestCase {
     
     var networkManager: NetworkManager!
-
-
+    
+    
     override func setUp() {
         super.setUp()
         
@@ -63,10 +63,10 @@ final class NetworkManager_Tests: XCTestCase {
         
         super.tearDown()
     }
-
+    
     func testFetchFactsSuccess() {
         let expectation = self.expectation(description: "Fetch facts successfully")
-
+        
         let jsonData = """
         {
             "title": "Table Title",
@@ -79,7 +79,7 @@ final class NetworkManager_Tests: XCTestCase {
             ]
         }
         """.data(using: .isoLatin1)!
-
+        
         MockNetworkURLProtocol.stubResponse = jsonData
         
         networkManager.fetchFacts() { (facts: MyTableModel?, error) in
@@ -87,22 +87,22 @@ final class NetworkManager_Tests: XCTestCase {
             XCTAssertNil(error)
             expectation.fulfill()
         }
-
+        
         waitForExpectations(timeout: 5, handler: nil)
     }
-
+    
     func testFetchFactsNetworkError() {
         let expectation = self.expectation(description: "Fetch facts fails due to network error")
-
+        
         MockNetworkURLProtocol.stubError = NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: nil)
-
+        
         networkManager.fetchFacts { (facts: MyTableModel?, error) in
             XCTAssertNil(facts)
             XCTAssertNotNil(error)
             XCTAssertEqual((error as NSError?)?.code, NSURLErrorNotConnectedToInternet)
             expectation.fulfill()
         }
-
+        
         waitForExpectations(timeout: 5, handler: nil)
     }
     

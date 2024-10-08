@@ -10,7 +10,7 @@ import XCTest
 
 class MockViewModel: MyTableViewInput {
     var myTableModel: MyTableModel?
-
+    
     func refreshData() {
         myTableModel = getRefreshedObject()
     }
@@ -23,7 +23,7 @@ class MockViewModel: MyTableViewInput {
         let title = "Sample Title"
         let row1 = Row(title: "Fact 1", description: "Description 1", imageHref: "Link1")
         let row2 = Row(title: "Fact 2", description: "Description 2", imageHref: "Link2")
-
+        
         return MyTableModel(title: title, rows: [row1,row2])
     }
     
@@ -31,7 +31,7 @@ class MockViewModel: MyTableViewInput {
         let title = "Refreshed Title"
         let row1 = Row(title: "Refreshed Fact 1", description: "Refreshed Description 1", imageHref: "Refreshed Link1")
         let row2 = Row(title: "Refreshed Fact 2", description: "Refreshed Description 2", imageHref: "Refreshed Link2")
-
+        
         return MyTableModel(title: title, rows: [row1,row2])
     }
     
@@ -40,19 +40,19 @@ class MockViewModel: MyTableViewInput {
 
 final class MyTableViewModel_Tests: XCTestCase {
     var viewModel: MyTableViewInput!
-
+    
     override func setUp() {
         super.setUp()
         viewModel = MockViewModel()
     }
-
+    
     override func tearDown() {
         viewModel = nil
         super.tearDown()
     }
-
+    
     func testFetchFactsSuccess() {
-
+        
         // Call fetchFacts
         viewModel.fetchFacts()
         let expectation = self.expectation(description: "Wait for fetch facts completion")
@@ -68,10 +68,10 @@ final class MyTableViewModel_Tests: XCTestCase {
             XCTAssertEqual(self.viewModel.myTableModel?.rows[1].imageHref, "Link2")
             expectation.fulfill()
         }
-
+        
         waitForExpectations(timeout: 5, handler: nil)
     }
-
+    
     func testFetchFactsFailure() {
         // Set up mock response for failure
         viewModel.refreshData()
@@ -88,8 +88,8 @@ final class MyTableViewModel_Tests: XCTestCase {
             XCTAssertEqual(self.viewModel.myTableModel?.rows[1].imageHref, "Refreshed Link2")
             expectation.fulfill()
         }
-
+        
         waitForExpectations(timeout: 5, handler: nil)
     }
-
+    
 }

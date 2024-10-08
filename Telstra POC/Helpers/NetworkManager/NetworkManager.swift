@@ -42,7 +42,7 @@ class NetworkManager {
                 return
             }
             do {
-//                Data recieved from this JSON is as per isoLatin1 encoding
+                //                Data recieved from this JSON is as per isoLatin1 encoding
                 let factsData = try self.decodeJSON(data: data, encoding: .isoLatin1, type: T.self)
                 completion?(factsData, nil)
             } catch {

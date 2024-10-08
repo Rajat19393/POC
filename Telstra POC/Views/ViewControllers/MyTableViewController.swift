@@ -12,7 +12,7 @@ protocol MyTableViewOutput:AnyObject {
 }
 protocol MyTableViewInput: AnyObject {
     var myTableModel: MyTableModel? { get set }
-
+    
     func refreshData()
     func fetchFacts()
 }

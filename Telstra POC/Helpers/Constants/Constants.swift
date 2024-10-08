@@ -8,7 +8,7 @@
 import Foundation
 
 enum Constants {
- static let placeHolder = "placeholder"
+    static let placeHolder = "placeholder"
     static let notAvailable = "Not Available"
     static let loadingTitle = "Loading Title ..."
     static let pullToRefresh = "Pull to refresh"
